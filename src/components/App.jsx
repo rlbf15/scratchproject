@@ -10,10 +10,12 @@ import { surveyData } from "../utils/Data.js";
 import LineChart from './LineChart.jsx';
 
 import '../style.css'
+// import '..'
 
 
 
 const App = () => {
+
 
 	const [chartData, setChartData] = useState({
     labels: surveyData.map((data) => data.week_id),
@@ -43,9 +45,10 @@ const App = () => {
 		<div className='container'>
 			<Routes>
         <Route path='/survey' element={<Survey/> }/>
-				<Route path='/graph' element={<LineChart chartData={chartData}/>}/>
+				<Route path='confirmEmployer/graph' element={<LineChart />}/>
 				<Route path='/' element={ <Dashboard /> } />
-        <Route path='/confirmEmployer' element={<ConfirmEmployer /> } />
+        <Route path='/confirmEmployer' element={<ConfirmEmployer/> } />
+        <Route path='/graph' element={<LineChart /> } />
 			</Routes>
 		</div>
 )
@@ -55,42 +58,3 @@ const App = () => {
 
 export default App;
   
-
-
-
-
-/// ATTEMPT TO PLUG DATA FROM DATABASE TO CHART 
-
-//   const [bool, setBool] = useState(false)
-//   let whatever;
-//   let chartData;
-//   useEffect(() => {
-//     fetch('/api/graph')
-//       .then((data) => data.json())
-//       .then((data) => {
-//     console.log('sdlfjdkls', data);
-//     whatever = data;
-//   })
-//     .then(() => {
-//       console.log('whateverrrr', whatever)
-      
-//       chartData = {
-//         labels: whatever.map((data) => data.week_id),
-//         datasets: [
-//           {
-//             label: "Employee Satisfaction",
-//             data: whatever.map((data) => data.question_0)
-//           },
-//           {
-//             label: "Employee Happiness",
-//             data: whatever.map((data) => data.question_2)
-//           },
-//           {
-//             label: "Employee Comfort",
-//             data: whatever.map((data) => data.question_1)
-//           },
-//         ]
-//       }
-//       setBool(true);
-//     })
-// }, [])
